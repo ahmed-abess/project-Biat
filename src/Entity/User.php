@@ -48,42 +48,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $gouvernarat;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $telephone;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dateNaissance;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $situation;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $cin;
 
     /**
-     * @ORM\Column(type="string", length=255,nullable=true)
-     */
-    private $rib;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $payeNaissance;
+    private $pseudo;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nationnalite;
 
     public function getId(): ?int
     {
@@ -109,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -117,7 +88,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -198,54 +169,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getGouvernarat(): ?string
-    {
-        return $this->gouvernarat;
-    }
-
-    public function setGouvernarat(string $gouvernarat): self
-    {
-        $this->gouvernarat = $gouvernarat;
-
-        return $this;
-    }
-
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    public function getDateNaissance(): ?\DateTimeInterface
-    {
-        return $this->dateNaissance;
-    }
-
-    public function setDateNaissance(?\DateTimeInterface $dateNaissance): self
-    {
-        $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
-
-    public function getSituation(): ?string
-    {
-        return $this->situation;
-    }
-
-    public function setSituation(string $situation): self
-    {
-        $this->situation = $situation;
-
-        return $this;
-    }
-
     public function getCin(): ?string
     {
         return $this->cin;
@@ -258,38 +181,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRib(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->rib;
+        return $this->pseudo;
     }
 
-    public function setRib(string $rib): self
+    public function setPseudo(string $pseudo): self
     {
-        $this->rib = $rib;
-
-        return $this;
-    }
-
-    public function getPayeNaissance(): ?string
-    {
-        return $this->payeNaissance;
-    }
-
-    public function setPayeNaissance(string $payeNaissance): self
-    {
-        $this->payeNaissance = $payeNaissance;
-
-        return $this;
-    }
-
-    public function getNationnalite(): ?string
-    {
-        return $this->nationnalite;
-    }
-
-    public function setNationnalite(string $nationnalite): self
-    {
-        $this->nationnalite = $nationnalite;
+        $this->pseudo = $pseudo;
 
         return $this;
     }

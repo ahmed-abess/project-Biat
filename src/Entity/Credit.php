@@ -32,6 +32,11 @@ class Credit
      */
     private $ficheDep;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    private $client;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Credit
     public function setFicheDep(?string $ficheDep): self
     {
         $this->ficheDep = $ficheDep;
+
+        return $this;
+    }
+
+    public function getClient(): ?User
+    {
+        return $this->client;
+    }
+
+    public function setClient(?User $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }
