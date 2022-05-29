@@ -31,7 +31,7 @@ class UserController extends MainController
                 return $this->successResponse($object, Response::HTTP_OK);
             }
 
-            return $this->successResponse(["msg"=>"jjj"],Response::HTTP_UNAUTHORIZED);
+            return $this->successResponse(["msg"=>"erreur"],Response::HTTP_UNAUTHORIZED);
 
     }
 

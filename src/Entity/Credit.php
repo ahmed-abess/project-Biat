@@ -37,6 +37,16 @@ class Credit
      */
     private $client;
 
+    /**
+     * @ORM\OneToOne(targetEntity=TypeCredit::class, cascade={"persist", "remove"})
+     */
+    private $typeCredit;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statut;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,4 +99,29 @@ class Credit
 
         return $this;
     }
+
+    public function getTypeCredit(): ?TypeCredit
+    {
+        return $this->typeCredit;
+    }
+
+    public function setTypeCredit(?TypeCredit $typeCredit): self
+    {
+        $this->typeCredit = $typeCredit;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
 }

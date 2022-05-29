@@ -83,9 +83,49 @@ class Compte
     private $cin;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $rib;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $revenueNet;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $typeC;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $chiffreaffaire;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateCreationEntreprise;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbrSalarie;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $paysAcivite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    private $client;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $statut;
 
     public function getId(): ?int
     {
@@ -256,6 +296,102 @@ class Compte
     public function setRib(?int $rib): self
     {
         $this->rib = $rib;
+
+        return $this;
+    }
+
+    public function getRevenueNet(): ?string
+    {
+        return $this->revenueNet;
+    }
+
+    public function setRevenueNet(?string $revenueNet): self
+    {
+        $this->revenueNet = $revenueNet;
+
+        return $this;
+    }
+
+    public function getTypeC(): ?string
+    {
+        return $this->typeC;
+    }
+
+    public function setTypeC(?string $typeC): self
+    {
+        $this->typeC = $typeC;
+
+        return $this;
+    }
+
+    public function getChiffreaffaire(): ?string
+    {
+        return $this->chiffreaffaire;
+    }
+
+    public function setChiffreaffaire(?string $chiffreaffaire): self
+    {
+        $this->chiffreaffaire = $chiffreaffaire;
+
+        return $this;
+    }
+
+    public function getDateCreationEntreprise(): ?\DateTimeInterface
+    {
+        return $this->dateCreationEntreprise;
+    }
+
+    public function setDateCreationEntreprise(?\DateTimeInterface $dateCreationEntreprise): self
+    {
+        $this->dateCreationEntreprise = $dateCreationEntreprise;
+
+        return $this;
+    }
+
+    public function getNbrSalarie(): ?int
+    {
+        return $this->nbrSalarie;
+    }
+
+    public function setNbrSalarie(?int $nbrSalarie): self
+    {
+        $this->nbrSalarie = $nbrSalarie;
+
+        return $this;
+    }
+
+    public function getPaysAcivite(): ?string
+    {
+        return $this->paysAcivite;
+    }
+
+    public function setPaysAcivite(?string $paysAcivite): self
+    {
+        $this->paysAcivite = $paysAcivite;
+
+        return $this;
+    }
+
+    public function getClient(): ?User
+    {
+        return $this->client;
+    }
+
+    public function setClient(?User $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?bool $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }
