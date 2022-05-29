@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Compte;
 use App\Entity\Credit;
+use App\Entity\TypeCredit;
 use App\Entity\User;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +55,7 @@ class ClientController extends MainController
     }
 
     /**
-     * @Route("/credit", name="add_credit",methods={"POST"})
+     * @Route("/credits", name="add_credit",methods={"POST"})
      */
     public function credit(Request $request, FileUploader $fileUploader)
     {
@@ -62,15 +63,18 @@ class ClientController extends MainController
 
             $montant = $request->get("montant");
             $nbMois = $request->get("nbMois");
+            $typeCredit = $request->get("typeCredit");
             $data = $request->files->get("file");
             $credit = new Credit();
             $user = $this->em->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+            $type = $this->em->getRepository(TypeCredit::class)->findOneBy(['id' => $typeCredit]);
             if ($data) {
                 $brochureFileName = $fileUploader->upload($data);
                 $credit->setMontant($montant);
                 $credit->setFicheDep($brochureFileName);
                 $credit->setNbMois($nbMois);
                 $credit->setClient($user);
+                $credit->setTypeCredit($type);
                 $credit->setStatut("pending");
                 $credit->setClient($user);
                 $this->em->persist($credit);
